@@ -1,0 +1,5 @@
+add_executable(primefun primefun.cpp)
+add_dependencies(primefun mathutils)
+include_directories(primefun ../mathutils/include/)
+message("${CMAKE_BINARY_DIR}")
+target_link_libraries(primefun ${CMAKE_BINARY_DIR}/mathutils/libmathutils.a)
