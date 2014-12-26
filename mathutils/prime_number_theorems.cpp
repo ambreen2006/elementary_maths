@@ -12,15 +12,21 @@ bool isprime(unsigned int whole_number, unsigned int &divisor_num)
     return false;
   }
   
-  if(whole_number == 1 && whole_number == 2)
+  if(whole_number == 1)
   {
     divisor_num = 1;
-    return true;
+    return false;
+  }
+  
+  if(whole_number == 2)
+  {
+    divisor_num = 2;
+    return false;
   }
   
   if(whole_number % 2 == 0) 
   {
-    divisor_num = 2;
+    divisor_num = whole_number / 2;
     return false;
   }
   
@@ -64,6 +70,12 @@ void copyPrimeDivisors(long int whole_number, unsigned int **prime_divisors, siz
 	divisable = false;
 	if( !(isprime(divident, divisor)) )
 	{
+	   if(divisor == 1)
+	   {
+	       divisable = false;
+	       break;
+	   }
+	   
 	   divisable = true;
 	   divident = divident / divisor;
 	      
